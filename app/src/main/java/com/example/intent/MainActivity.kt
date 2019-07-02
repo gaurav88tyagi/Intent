@@ -7,6 +7,8 @@ import android.text.TextUtils
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +20,9 @@ class MainActivity : AppCompatActivity() {
 
             if(TextUtils.isEmpty(etFirstNum.text.toString()) || TextUtils.isEmpty(etSecondNum.text.toString())) {
 
-                Toast.makeText(this, "Invalid Input",LENGTH_SHORT).show()
+//              Toast.makeText(this, "Invalid Input",LENGTH_SHORT).show()
+
+                toast("Invalid Input")
 
             }
             else {
@@ -27,9 +31,11 @@ class MainActivity : AppCompatActivity() {
                var secondNum = etSecondNum.text.toString().toInt()
                var stringOfSum = firstNum.toString() + " + " + secondNum.toString() + " = " + (firstNum + secondNum).toString()
 
-               val intent = Intent(this, Main2Activity::class.java)
-               intent.putExtra("EQN", stringOfSum)
-               startActivity(intent)
+//              val intent = Intent(this, Main2Activity::class.java)
+//              intent.putExtra("EQN", stringOfSum)
+//              startActivity(intent)
+
+               startActivity(intentFor<Main2Activity>("EQN" to stringOfSum))
 
             }
         }
